@@ -1,0 +1,20 @@
+name: Code quality check
+
+on:
+  workflow_call:
+
+
+
+jobs:
+  quality-checks:
+    name: Quality checks
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Setup Python
+      uses: actions/setup-python@v6
+    - name: Run pre-commit
+      uses: pre-commit/action@v3.0.1
+    - name: Check commits
+      uses: webiny/action-conventional-commits@8bc41ff4e7d423d56fa4905f6ff79209a78776c7
