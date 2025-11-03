@@ -2,6 +2,10 @@ name: Native multi-platform OCI build
 
 on:
   workflow_call:
+    inputs:
+      context: 
+        type: string
+        default: "./"
 
 env:
   REGISTRY: ghcr.io
@@ -59,7 +63,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          context: ./build
+          context: ${{ inputs.context }}
           push: ${{ env.SHOULD_PUSH }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
