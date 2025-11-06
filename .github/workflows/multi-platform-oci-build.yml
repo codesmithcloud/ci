@@ -6,10 +6,13 @@ on:
       context: 
         type: string
         default: "./"
+      name:
+        type: string
+        default: ${{ github.repository }}
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ inputs.name }}
 
 permissions:
   contents: read
